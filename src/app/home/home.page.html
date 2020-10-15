@@ -40,8 +40,9 @@
               <ion-img [src]="data.url" style="height: 100px"></ion-img>
             </ion-card-header>
             <ion-card-content>
-              <ion-card-subtitle><b>{{ data.brand + ' ' + data.model }}</b></ion-card-subtitle>
-              <ion-card-subtitle>
+              <ion-card-subtitle>{{ data.type }}</ion-card-subtitle>
+              <ion-card-subtitle color="primary"><b>{{ data.brand + ' ' + data.model }}</b></ion-card-subtitle>
+              <ion-card-subtitle style="color: white">
                 {{ data.price | currency: 'Rp. '}} <br>
                 Stock: {{ data.stock }}
               </ion-card-subtitle>
@@ -66,7 +67,8 @@
               <ion-img [src]="data.url"></ion-img>
             </ion-thumbnail>
             <ion-label class="ion-text-wrap">
-              <b>{{ data.brand + ' ' + data.model }}</b> <br>
+              <b style="color: rebeccapurple">{{ data.brand + ' ' + data.model}}</b>
+              {{ ' (' + data.type + ') ' }}<br>
               {{ data.price | currency:"Rp. "}} <br>
               Stock: {{ data.stock }}
             </ion-label>

@@ -14,6 +14,7 @@
             <ion-img [src]="loadedData.url"></ion-img>
           </ion-card-header>
           <ion-card-content>
+            <ion-card-subtitle>{{ loadedData.type }}</ion-card-subtitle>
             <ion-card-title>{{ loadedData.brand + ' ' + loadedData.model }}</ion-card-title>
             <ion-card-subtitle>
               {{ loadedData.price | currency: 'Rp. ' }} <br>
@@ -22,6 +23,15 @@
           </ion-card-content>
           <ion-card-content>
             <ion-card-title>Specifications</ion-card-title>
+            <ion-card-subtitle>
+              Type: {{ loadedData.type }} <br>
+            </ion-card-subtitle>
+            <ion-card-subtitle>
+              Brand: {{ loadedData.brand }} <br>
+            </ion-card-subtitle>
+            <ion-card-subtitle>
+              Model: {{ loadedData.model }} <br><br>
+            </ion-card-subtitle>
             <ion-card-subtitle *ngIf="loadedData.base_clock">
               Base clock: {{ loadedData.base_clock }} GHz <br>
             </ion-card-subtitle>
@@ -35,13 +45,16 @@
               Number of thread(s): {{ loadedData.thread }} <br>
             </ion-card-subtitle>
             <ion-card-subtitle *ngIf="loadedData.speed">
-              Speed: {{ loadedData.speed }} <br>
+              Speed: {{ loadedData.speed }} MHz<br>
             </ion-card-subtitle>
             <ion-card-subtitle *ngIf="loadedData.size">
-              Size: {{ loadedData.size }} Gb<br>
+              Size: {{ loadedData.size }} GB<br>
             </ion-card-subtitle>
             <ion-card-subtitle *ngIf="loadedData.chipset">
               Chipset: {{ loadedData.chipset }} MHz <br>
+            </ion-card-subtitle>
+            <ion-card-subtitle *ngIf="loadedData.processor">
+              Processor: {{ loadedData.processor }} <br>
             </ion-card-subtitle>
           </ion-card-content>
         </ion-card>
