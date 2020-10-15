@@ -1,6 +1,9 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>Home</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button menu="sideMenu"></ion-menu-button>
+    </ion-buttons>
     <ion-buttons slot="primary">
       <ion-button color="primary" slot="end" (click)="changeView()">
         <ion-icon *ngIf="listView == true" name="grid" slot="icon-only"></ion-icon>

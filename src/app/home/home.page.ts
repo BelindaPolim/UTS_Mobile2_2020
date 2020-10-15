@@ -25,6 +25,9 @@ export class HomePage implements OnInit{
 
   ngOnInit() {
     this.listView = false;
+  }
+
+  ionViewWillEnter() {
     this.datas = this.homeService.getAllDatas();
   }
 

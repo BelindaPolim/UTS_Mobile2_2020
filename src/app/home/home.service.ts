@@ -63,4 +63,10 @@ export class HomeService {
       return data.id === dataId;
       })};
   }
+
+  deleteData(dataId: string) {
+    this.datas = this.datas.filter(data => {
+      return data.id !== dataId;
+    });
+  }
 }
