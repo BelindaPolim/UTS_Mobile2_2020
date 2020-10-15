@@ -1,20 +1,78 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+    <ion-title>Home</ion-title>
+    <ion-buttons slot="primary">
+      <ion-button color="primary" slot="end" (click)="changeView()">
+        <ion-icon *ngIf="listView == true" name="grid" slot="icon-only"></ion-icon>
+        <ion-icon *ngIf="listView == false" name="list" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+<ion-content>
+  <ion-grid >
+    <ion-row>
+      <ion-col size="12" size-sm="8" offset-sm="2">
+        <ion-header>
+          <ion-title class="ion-no-padding">
+            Featured Products
+          </ion-title>
+        </ion-header>
+        <ion-slides #featuredItems pager="true" style="height: 70%" [options]="sliderOpts">
+          <ion-slide *ngFor="let data of datas | slice: 1" [routerLink]="['./', data.id]">
+            <img [src]="data.url" class="ion-padding" alt=""> <br>
+          </ion-slide>
+        </ion-slides>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid *ngIf="listView == false">
+    <ion-row>
+      <ion-header>
+        <ion-title>Products</ion-title>
+      </ion-header>
+      <ion-col *ngFor="let data of datas" size-sm="6" size="6" size-lg="3">
+        <!-- gridView -->
+        <ion-list>
+          <ion-card [routerLink]="['./', data.id]">
+            <ion-card-header>
+              <ion-img [src]="data.url" style="height: 100px"></ion-img>
+            </ion-card-header>
+            <ion-card-content>
+              <ion-card-subtitle><b>{{ data.brand + ' ' + data.model }}</b></ion-card-subtitle>
+              <ion-card-subtitle>
+                {{ data.price | currency: 'Rp. '}} <br>
+                Stock: {{ data.stock }}
+              </ion-card-subtitle>
+            </ion-card-content>
+          </ion-card>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid *ngIf="listView == true">
+    <ion-row>
+      <ion-header>
+        <ion-title>
+          Products
+        </ion-title>
+      </ion-header>
+      <ion-col *ngFor="let data of datas" size="12">
+        <!--  listView-->
+        <ion-list>
+          <ion-item [routerLink]="['./', data.id]">
+            <ion-thumbnail slot="start">
+              <ion-img [src]="data.url"></ion-img>
+            </ion-thumbnail>
+            <ion-label class="ion-text-wrap">
+              <b>{{ data.brand + ' ' + data.model }}</b> <br>
+              {{ data.price | currency:"Rp. "}} <br>
+              Stock: {{ data.stock }}
+            </ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
