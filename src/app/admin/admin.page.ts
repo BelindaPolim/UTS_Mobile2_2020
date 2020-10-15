@@ -30,7 +30,7 @@ export class AdminPage implements OnInit {
   async presentLoading() {
     const loading = await  this.loadingCtrl.create({
       message: 'Deleting data...',
-      duration: 5000
+      duration: 3000
     });
     await loading.present();
 
@@ -41,7 +41,8 @@ export class AdminPage implements OnInit {
   async presentToast() {
     const toast = await this.toastCtrl.create({
       message: 'Data deleted.',
-      duration: 2000
+      duration: 2000,
+      color: 'warning'
     });
     toast.present();
   }
@@ -56,7 +57,7 @@ export class AdminPage implements OnInit {
     slidingItem.close();
     this.presentLoading().then(() => {
       this.homeService.deleteData(data.id);
-      this.router.navigate(['/admin']);
+      this.router.navigate(['/']);
       this.presentToast();
     });
   }
