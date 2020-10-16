@@ -23,8 +23,8 @@
           </ion-title>
         </ion-header>
         <ion-slides #featuredItems pager="true" style="height: 70%" [options]="sliderOpts">
-          <ion-slide *ngFor="let data of datas | slice: 1" [routerLink]="['./', data.id]">
-            <img [src]="data.url" class="ion-padding" alt="" *ngIf="data.stock > 0"> <br>
+          <ion-slide *ngFor="let data of datas | slice: 1:4" [routerLink]="['./', data.id]">
+            <img [src]="data.url" class="ion-padding" alt=""> <br>
           </ion-slide>
         </ion-slides>
       </ion-col>
