@@ -1,6 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>New Product</ion-title>
+    <ion-back-button slot="start" defaultHref="./"></ion-back-button>
   </ion-toolbar>
 </ion-header>
 
@@ -39,7 +40,7 @@
       <!-- CPU -->
       <ion-card *ngIf="type.value == 'CPU'">
         <ion-card-header>
-          <ion-card-subtitle>Details</ion-card-subtitle>
+          <ion-card-subtitle>{{ type.value }} Details</ion-card-subtitle>
         </ion-card-header>
         <ion-item>
           <ion-label>Base clock</ion-label>
@@ -53,16 +54,45 @@
         </ion-item>
         <ion-item>
           <ion-label>Number of core(s)</ion-label>
-          <ion-input type="number" formControlName="core"></ion-input>
+          <ion-input placeholder="12" type="number" formControlName="core"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label>Number of thread(s)</ion-label>
-          <ion-input type="number" formControlName="thread"></ion-input>
+          <ion-input placeholder="24" type="number" formControlName="thread"></ion-input>
         </ion-item>
       </ion-card>
       <!-- RAM -->
-
+      <ion-card *ngIf="type.value == 'RAM'">
+        <ion-card-header>
+          <ion-card-subtitle>{{ type.value }} Details</ion-card-subtitle>
+        </ion-card-header>
+        <ion-item>
+          <ion-label>Speed</ion-label>
+          <ion-input placeholder="2666" type="number" formControlName="speed"></ion-input>
+          <ion-label slot="end">MHz</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>Size</ion-label>
+          <ion-input placeholder="8" type="number" formControlName="size"></ion-input>
+          <ion-label slot="end">GB</ion-label>
+        </ion-item>
+      </ion-card>
       <!-- Motherboard -->
+      <ion-card *ngIf="type.value == 'Motherboard'">
+        <ion-card-header>
+          <ion-card-subtitle>{{ type.value }} Details</ion-card-subtitle>
+        </ion-card-header>
+        <ion-item>
+          <ion-label>Chipset</ion-label>
+          <ion-input placeholder="Brand & Model" type="text" formControlName="chipset"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Processor</ion-label>
+          <ion-input placeholder="Brand" type="text" formControlName="processor"></ion-input>
+        </ion-item>
+      </ion-card>
     </ion-list>
+
+    <ion-button type="submit" class="ion-padding" expand="block" (click)="add()">Submit</ion-button>
   </form>
 </ion-content>

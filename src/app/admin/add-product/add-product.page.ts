@@ -52,8 +52,26 @@ export class AddProductPage implements OnInit {
       thread: new FormControl(null, {
         updateOn: 'blur',
         validators: [Validators.required]
+      }),
+      speed: new FormControl(null, {
+        updateOn: 'blur',
+        validators: [Validators.required]
+      }),
+      size: new FormControl(null, {
+        updateOn: 'blur',
+        validators: [Validators.required]
+      }),
+      chipset: new FormControl(null, {
+        updateOn: 'blur',
+        validators: [Validators.required]
+      }),
+      processor: new FormControl(null, {
+        updateOn: 'blur',
+        validators: [Validators.required]
       })
     });
   }
 
+  add() {
+  }
 }
