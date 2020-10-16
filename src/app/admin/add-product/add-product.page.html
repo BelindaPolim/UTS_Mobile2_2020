@@ -1,0 +1,68 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>New Product</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen=true>
+  <form [formGroup]="form">
+    <ion-list>
+      <ion-item>
+        <ion-label position="floating">Image URL</ion-label>
+        <ion-input type="url" formControlName="url"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Product Type</ion-label>
+        <ion-select interface="popover" formControlName="type" [formControl]="type">
+          <ion-select-option value="CPU">CPU</ion-select-option>
+          <ion-select-option value="RAM">RAM</ion-select-option>
+          <ion-select-option value="Motherboard">Motherboard</ion-select-option>
+          <ion-select-option value="GPU">GPU</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Brand</ion-label>
+        <ion-input type="text" formControlName="brand"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Model</ion-label>
+        <ion-input type="text" formControlName="model"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Price</ion-label>
+        <ion-input placeholder="1000000" type="number" formControlName="price"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Stock</ion-label>
+        <ion-input placeholder="10" type="number" formControlName="stock"></ion-input>
+      </ion-item>
+      <!-- CPU -->
+      <ion-card *ngIf="type.value == 'CPU'">
+        <ion-card-header>
+          <ion-card-subtitle>Details</ion-card-subtitle>
+        </ion-card-header>
+        <ion-item>
+          <ion-label>Base clock</ion-label>
+          <ion-input placeholder="2.5" type="number" formControlName="base_clock"></ion-input>
+          <ion-label slot="end">GHz</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>Boost clock</ion-label>
+          <ion-input placeholder="2.5" type="number" formControlName="boost_clock"></ion-input>
+          <ion-label slot="end">GHz</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>Number of core(s)</ion-label>
+          <ion-input type="number" formControlName="core"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Number of thread(s)</ion-label>
+          <ion-input type="number" formControlName="thread"></ion-input>
+        </ion-item>
+      </ion-card>
+      <!-- RAM -->
+
+      <!-- Motherboard -->
+    </ion-list>
+  </form>
+</ion-content>

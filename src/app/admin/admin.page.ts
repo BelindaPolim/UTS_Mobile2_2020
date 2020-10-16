@@ -27,15 +27,29 @@ export class AdminPage implements OnInit {
     console.log(this.datas);
   }
 
-  async presentLoading() {
-    const loading = await  this.loadingCtrl.create({
-      message: 'Deleting data...',
-      duration: 3000
+  async presentAlert(data: Home, slidingItem: IonItemSliding) {
+    slidingItem.close();
+    const alert = await this.alertCtrl.create({
+      header: 'But whyy?',
+      message: 'Are you really really sure you want to delete this data?',
+      buttons: [
+        {
+          text: 'Maybe not',
+          role: 'cancel'
+        },
+        {
+          text: 'Yeah!',
+          handler: () => {
+            this.homeService.deleteData(data.id);
+            this.redirectTo('/admin');
+            this.presentLoading().then(() => {
+              this.presentToast();
+            });
+          }
+        }
+      ]
     });
-    await loading.present();
-
-    const { role, data } = await loading.onDidDismiss();
-    console.log('Loading dismissed!');
+    await alert.present();
   }
 
   async presentToast() {
@@ -47,18 +61,27 @@ export class AdminPage implements OnInit {
     toast.present();
   }
 
-  // deleteData() {
-  //   this.presentLoading().then(() => {
-  //     this.homeService.deleteData(this.data.id);
+  async presentLoading() {
+    const loading = await  this.loadingCtrl.create({
+      message: 'Deleting data...',
+      duration: 3000
+    });
+    await loading.present();
+
+    const { role, data } = await loading.onDidDismiss();
+  }
+
+  redirectTo(uri: string) {
+    this.router.navigateByUrl('/deleting', {skipLocationChange: true}).then(() =>
+    this.router.navigate([uri]));
+  }
+
+  // delete(data: Home, slidingItem: IonItemSliding) {
+  //   slidingItem.close();
+  //   this.presentAlert().then(() => {
+  //     this.homeService.deleteData(data.id);
+  //     this.redirectTo('/admin');
+  //     this.presentToast();
   //   });
   // }
-
-  delete(data: Home, slidingItem: IonItemSliding) {
-    slidingItem.close();
-    this.presentLoading().then(() => {
-      this.homeService.deleteData(data.id);
-      this.router.navigate(['/']);
-      this.presentToast();
-    });
-  }
 }
