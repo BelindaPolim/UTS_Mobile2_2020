@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {Home} from '../../home/home.model';
 import {HomeService} from '../../home/home.service';
 import {Router} from '@angular/router';
 
@@ -12,7 +11,6 @@ import {Router} from '@angular/router';
 export class AddProductPage implements OnInit {
     form: FormGroup;
     type = new FormControl('');
-    datas: Home[];
   constructor(
       private homeService: HomeService,
       private router: Router

@@ -20,6 +20,10 @@ const routes: Routes = [
     path: 'deleting',
     loadChildren: () => import('./deleting/deleting.module').then( m => m.DeletingPageModule)
   },
+  {
+    path: 'about',
+    loadChildren: () => import('./about/about.module').then( m => m.AboutPageModule)
+  },
 ];
 
 @NgModule({

@@ -166,4 +166,41 @@ export class HomeService {
       price: dataPrice
     });
   }
+
+  updateData(
+      dataId: string,
+      dataUrl: string,
+      dataBrand: string,
+      dataModel: string,
+      dataStock: number,
+      dataPrice: number,
+      baseClock: number,
+      boostClock: number,
+      numCore: number,
+      numThread: number,
+      dataSpeed: number,
+      dataSize: number,
+      dataChipset: string,
+      dataProcessor: string
+  ) {
+    return{
+      ...this.datas.find(data => {
+        if (data.id === dataId) {
+          data.url = dataUrl;
+          data.brand = dataBrand;
+          data.model = dataModel;
+          data.stock = dataStock;
+          data.price = dataPrice;
+          data.base_clock = baseClock;
+          data.boost_clock = boostClock;
+          data.core = numCore;
+          data.thread = numThread;
+          data.speed = dataSpeed;
+          data.size = dataSize;
+          data.chipset = dataChipset;
+          data.processor = dataProcessor;
+        }
+      })
+    };
+  }
 }
