@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {Home} from '../../home/home.model';
+import {HomeService} from '../../home/home.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-add-product',
@@ -9,7 +12,11 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 export class AddProductPage implements OnInit {
     form: FormGroup;
     type = new FormControl('');
-  constructor() { }
+    datas: Home[];
+  constructor(
+      private homeService: HomeService,
+      private router: Router
+  ) { }
 
   ngOnInit() {
     this.form = new FormGroup({
@@ -72,6 +79,55 @@ export class AddProductPage implements OnInit {
     });
   }
 
-  add() {
+  onSubmit() {
+    const item = this.form.value;
+    if (this.type.value === 'CPU') {
+      this.homeService.newCPU(
+          item.url,
+          item.brand,
+          item.model,
+          item.stock,
+          item.price,
+          item.base_clock,
+          item.boost_clock,
+          item.core,
+          item.thread
+      );
+      this.router.navigate(['./admin']);
+    }
+    if (this.type.value === 'RAM') {
+      this.homeService.newRAM(
+          item.url,
+          item.brand,
+          item.model,
+          item.stock,
+          item.price,
+          item.speed,
+          item.size
+      );
+      this.router.navigate(['./admin']);
+    }
+    if (this.type.value === 'Motherboard') {
+      this.homeService.newMotherboard(
+          item.url,
+          item.brand,
+          item.model,
+          item.stock,
+          item.price,
+          item.chipset,
+          item.processor
+      );
+      this.router.navigate(['./admin']);
+    }
+    if (this.type.value === 'GPU') {
+      this.homeService.newGPU(
+          item.url,
+          item.brand,
+          item.model,
+          item.stock,
+          item.price
+      );
+      this.router.navigate(['./admin']);
+    }
   }
 }

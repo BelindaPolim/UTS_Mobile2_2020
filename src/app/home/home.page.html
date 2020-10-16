@@ -24,7 +24,7 @@
         </ion-header>
         <ion-slides #featuredItems pager="true" style="height: 70%" [options]="sliderOpts">
           <ion-slide *ngFor="let data of datas | slice: 1" [routerLink]="['./', data.id]">
-            <img [src]="data.url" class="ion-padding" alt=""> <br>
+            <img [src]="data.url" class="ion-padding" alt="" *ngIf="data.stock > 0"> <br>
           </ion-slide>
         </ion-slides>
       </ion-col>
@@ -37,7 +37,7 @@
       </ion-header>
       <ion-col *ngFor="let data of datas" size-sm="6" size="6" size-lg="3">
         <!-- gridView -->
-        <ion-list>
+        <ion-list *ngIf="data.stock > 0">
           <ion-card [routerLink]="['./', data.id]">
             <ion-card-header>
               <ion-img [src]="data.url" style="height: 100px"></ion-img>
@@ -64,7 +64,7 @@
       </ion-header>
       <ion-col *ngFor="let data of datas" size="12">
         <!--  listView-->
-        <ion-list>
+        <ion-list *ngIf="data.stock > 0">
           <ion-item [routerLink]="['./', data.id]">
             <ion-thumbnail slot="start">
               <ion-img [src]="data.url"></ion-img>

@@ -49,6 +49,15 @@ export class HomeService {
       processor: 'Intel',
       price: 610000,
       stock: 1
+    },
+    {
+      id: 'i5',
+      type: 'GPU',
+      url: 'https://www.tes.com/cdn/vendor/library/icons-v2/tes-180x180.png',
+      brand: 'Alpha',
+      model: 'YXGQ',
+      price: 23490,
+      stock: 0
     }
   ];
 
@@ -67,6 +76,94 @@ export class HomeService {
   deleteData(dataId: string) {
     this.datas = this.datas.filter(data => {
       return data.id !== dataId;
+    });
+  }
+
+  itemCount() {
+    return this.datas.length + 1;
+  }
+
+  newCPU(
+      dataUrl: string,
+      dataBrand: string,
+      dataModel: string,
+      dataStock: number,
+      dataPrice: number,
+      baseClock: number,
+      boostClock: number,
+      numCore: number,
+      numThread: number) {
+    this.datas.push({
+      id: 'i' + this.itemCount(),
+      url: dataUrl,
+      type: 'CPU',
+      brand: dataBrand,
+      model: dataModel,
+      stock: dataStock,
+      price: dataPrice,
+      base_clock: baseClock,
+      boost_clock: boostClock,
+      core: numCore,
+      thread: numThread
+    });
+  }
+
+  newRAM(
+      dataUrl: string,
+      dataBrand: string,
+      dataModel: string,
+      dataStock: number,
+      dataPrice: number,
+      dataSpeed: number,
+      dataSize: number) {
+    this.datas.push({
+      id: 'i' + this.itemCount(),
+      url: dataUrl,
+      type: 'RAM',
+      brand: dataBrand,
+      model: dataModel,
+      stock: dataStock,
+      price: dataPrice,
+      speed: dataSpeed,
+      size: dataSize
+    });
+  }
+
+  newMotherboard(
+      dataUrl: string,
+      dataBrand: string,
+      dataModel: string,
+      dataStock: number,
+      dataPrice: number,
+      dataChipset: string,
+      dataProcessor: string) {
+    this.datas.push({
+      id: 'i' + this.itemCount(),
+      url: dataUrl,
+      type: 'Motherboard',
+      brand: dataBrand,
+      model: dataModel,
+      stock: dataStock,
+      price: dataPrice,
+      chipset: dataChipset,
+      processor: dataProcessor
+    });
+  }
+
+  newGPU(
+      dataUrl: string,
+      dataBrand: string,
+      dataModel: string,
+      dataStock: number,
+      dataPrice: number) {
+    this.datas.push({
+      id: 'i' + this.itemCount(),
+      url: dataUrl,
+      type: 'GPU',
+      brand: dataBrand,
+      model: dataModel,
+      stock: dataStock,
+      price: dataPrice
     });
   }
 }

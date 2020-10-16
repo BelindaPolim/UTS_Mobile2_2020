@@ -76,12 +76,4 @@ export class AdminPage implements OnInit {
     this.router.navigate([uri]));
   }
 
-  // delete(data: Home, slidingItem: IonItemSliding) {
-  //   slidingItem.close();
-  //   this.presentAlert().then(() => {
-  //     this.homeService.deleteData(data.id);
-  //     this.redirectTo('/admin');
-  //     this.presentToast();
-  //   });
-  // }
 }
